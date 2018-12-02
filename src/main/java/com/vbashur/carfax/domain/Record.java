@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sun.istack.internal.Nullable;
 import org.immutables.value.Value;
+import org.jetbrains.annotations.Nullable;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -47,17 +47,14 @@ public interface Record {
     Boolean odometerRollback();
 
     static Comparator<Record> getHistoryOrderComparator() {
-        return new Comparator<Record>() {
-            @Override
-            public int compare(Record record1, Record record2) {
-                DateFormat df = new SimpleDateFormat(RECORD_DATE_FORMAT);
-                try {
-                    Date rec1Date = df.parse(record1.date());
-                    Date rec2Date = df.parse(record2.date());
-                    return rec1Date.compareTo(rec2Date);
-                } catch (ParseException e) {
-                    throw new IllegalArgumentException("Unable to parse record date", e);
-                }
+        return (Record record1, Record record2) -> {
+            DateFormat df = new SimpleDateFormat(RECORD_DATE_FORMAT);
+            try {
+                Date rec1Date = df.parse(record1.date());
+                Date rec2Date = df.parse(record2.date());
+                return rec1Date.compareTo(rec2Date);
+            } catch (ParseException e) {
+                throw new IllegalArgumentException("Unable to parse record date", e);
             }
         };
     }

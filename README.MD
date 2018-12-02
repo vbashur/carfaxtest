@@ -18,7 +18,7 @@ untouched.
 
 Validate service history by VIN
 ```
-GET       /api/history/:vin
+GET       /api/v1/vehicle/history/:vin
 ```
 
 ### Launching the application
@@ -35,7 +35,7 @@ TODO
 
 ### Built with
 
-- [Maven] (https://maven.apache.org/)
-- [Spring Boot] (http://projects.spring.io/spring-boot/)
+- Maven (https://maven.apache.org/)
+- Spring Boot (http://projects.spring.io/spring-boot/)
 
 Implemented by Victor Bashurov

@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class ServiceHistoryValidator {
 
-    public List<Record> checkOdometerRollback(List<Record> serviceRecords) {
+    public static List<Record> checkOdometerRollback(List<Record> serviceRecords) {
         if (Objects.isNull(serviceRecords) || serviceRecords.size() <= 1) return serviceRecords;
         Collections.sort(serviceRecords, Record.getHistoryOrderComparator());
         List<Record> checkedRecords = new LinkedList<>();

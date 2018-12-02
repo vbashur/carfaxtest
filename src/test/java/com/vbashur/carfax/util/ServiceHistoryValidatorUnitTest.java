@@ -10,14 +10,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-public class ServiceHistoryValidatorUnitTest {
+import static com.vbashur.carfax.util.ServiceHistoryValidator.*;
 
-    private ServiceHistoryValidator validator = new ServiceHistoryValidator();
+public class ServiceHistoryValidatorUnitTest {
 
     @Test
     public void emptyServiceHistoryTest() {
         List<Record> noRecords = Collections.EMPTY_LIST;
-        List<Record> checkedRecords = validator.checkOdometerRollback(noRecords);
+        List<Record> checkedRecords = checkOdometerRollback(noRecords);
         Assert.assertNotNull(checkedRecords);
         Assert.assertTrue(checkedRecords.size() == 0);
     }
@@ -39,7 +39,7 @@ public class ServiceHistoryValidatorUnitTest {
                 .build();
         records.add(wrongDateRecord1);
         records.add(wrongDateRecord2);
-        List<Record> checkedRecords = validator.checkOdometerRollback(records);
+        List<Record> checkedRecords = checkOdometerRollback(records);
         Assert.assertNull(checkedRecords);
     }
 
@@ -70,7 +70,7 @@ public class ServiceHistoryValidatorUnitTest {
         records.add(record2018);
         records.add(record2014);
         records.add(record2016);
-        List<Record> checkedRecords = validator.checkOdometerRollback(records);
+        List<Record> checkedRecords = checkOdometerRollback(records);
         Assert.assertNotNull(checkedRecords);
         Assert.assertEquals(3, checkedRecords.size());
         Assert.assertEquals(record2014, checkedRecords.get(0));
@@ -107,7 +107,7 @@ public class ServiceHistoryValidatorUnitTest {
         records.add(record2018);
         records.add(record2014);
         records.add(record2016);
-        List<Record> checkedRecords = validator.checkOdometerRollback(records);
+        List<Record> checkedRecords = checkOdometerRollback(records);
         Assert.assertNotNull(checkedRecords);
         Assert.assertEquals(3, checkedRecords.size());
         Assert.assertEquals(record2014, checkedRecords.get(0));
