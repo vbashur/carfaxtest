@@ -74,10 +74,10 @@ public class ServiceHistoryValidatorUnitTest {
         Assert.assertNotNull(checkedRecords);
         Assert.assertEquals(3, checkedRecords.size());
         Assert.assertEquals(record2014, checkedRecords.get(0));
-        Assert.assertNull(checkedRecords.get(0).odometerRollback());
+        Assert.assertNull(checkedRecords.get(0).getOdometerRollback());
         Assert.assertEquals(record2016, checkedRecords.get(1));
-        Assert.assertNull(checkedRecords.get(1).odometerRollback());
-        Assert.assertTrue(checkedRecords.get(2).odometerRollback());
+        Assert.assertNull(checkedRecords.get(1).getOdometerRollback());
+        Assert.assertTrue(checkedRecords.get(2).getOdometerRollback());
     }
 
     @Test
@@ -111,11 +111,11 @@ public class ServiceHistoryValidatorUnitTest {
         Assert.assertNotNull(checkedRecords);
         Assert.assertEquals(3, checkedRecords.size());
         Assert.assertEquals(record2014, checkedRecords.get(0));
-        Assert.assertNull(checkedRecords.get(0).odometerRollback());
+        Assert.assertNull(checkedRecords.get(0).getOdometerRollback());
         Assert.assertEquals(record2016, checkedRecords.get(1));
-        Assert.assertNull(checkedRecords.get(1).odometerRollback());
+        Assert.assertNull(checkedRecords.get(1).getOdometerRollback());
         Assert.assertEquals(record2018, checkedRecords.get(2));
-        Assert.assertNull(checkedRecords.get(2).odometerRollback());
+        Assert.assertNull(checkedRecords.get(2).getOdometerRollback());
     }
 }
 

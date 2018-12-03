@@ -14,5 +14,5 @@ import java.util.List;
 public interface Records {
 
     @JsonProperty("records")
-    List<Record> records();
+    List<Record> getRecords();
 }

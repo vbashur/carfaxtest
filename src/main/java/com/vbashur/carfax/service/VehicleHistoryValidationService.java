@@ -35,7 +35,7 @@ public class VehicleHistoryValidationService {
         logger.debug(String.format("Fetched service history for VIN %s: %s", vin, fetchedVehicleRecords.toString()));
         return ImmutableRecords.builder()
                 .from(fetchedVehicleRecords)
-                .records(ServiceHistoryValidator.checkOdometerRollback(fetchedVehicleRecords.records()))
+                .records(ServiceHistoryValidator.checkOdometerRollback(fetchedVehicleRecords.getRecords()))
                 .build();
     }
 }

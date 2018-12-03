@@ -1,5 +1,6 @@
 package com.vbashur.carfax.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -23,35 +24,36 @@ public interface Record {
 
     @JsonProperty("vin")
     @JsonPropertyDescription("Vehicle identification number")
-    String vin();
+    String getVin();
 
     @JsonProperty("date")
     @JsonPropertyDescription("Date following format 'YYYY-MM-DD'")
-    String date();
+    String getDate();
 
     @JsonProperty("data_provider_id")
     @JsonPropertyDescription("Data provider id")
-    Integer dataProviderId();
+    Integer getDataProviderId();
 
     @JsonProperty("odometer_reading")
     @JsonPropertyDescription("Odometer reading in KM")
-    Integer odometerReading();
+    Integer getOdometerReading();
 
     @JsonProperty("service_details")
     @JsonPropertyDescription("List of service details e.g Oil changed, Tires rotated, etc")
-    List<String> serviceDetails();
+    List<String> getServiceDetails();
 
     @Nullable
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("odometer_rollback")
     @JsonPropertyDescription("Odometer no longer grows in an ascending manner")
-    Boolean odometerRollback();
+    Boolean getOdometerRollback();
 
     static Comparator<Record> getHistoryOrderComparator() {
         return (Record record1, Record record2) -> {
             DateFormat df = new SimpleDateFormat(RECORD_DATE_FORMAT);
             try {
-                Date rec1Date = df.parse(record1.date());
-                Date rec2Date = df.parse(record2.date());
+                Date rec1Date = df.parse(record1.getDate());
+                Date rec2Date = df.parse(record2.getDate());
                 return rec1Date.compareTo(rec2Date);
             } catch (ParseException e) {
                 throw new IllegalArgumentException("Unable to parse record date", e);

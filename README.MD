@@ -23,15 +23,18 @@ GET       /api/v1/vehicle/history/:vin
 
 ### Launching the application
 
-TODO
+To compile and run from source code: `mvn clean spring-boot:run`
+To run from executable jar: java -jar <PATH TO EXECUTABLE JAR>
 
 ### Running the tests
 
-TODO
+`mvn clean test`
 
 ### Deployment
 
-TODO
+Build the executable jar with maven: `mvn package`
+Check if there is executable jar in _target_ directory of the project source folder
+This executable jar could be launched as standalone application see _Launching the application_ section
 
 ### Built with
 

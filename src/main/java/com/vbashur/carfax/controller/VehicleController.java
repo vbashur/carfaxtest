@@ -1,4 +1,4 @@
-package com.vbashur.carfax.external;
+package com.vbashur.carfax.controller;
 
 
 import com.vbashur.carfax.domain.Records;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/vehicle/")
-public class VehicleController {
+public class VehicleController extends AbstractBaseController {
 
     @Autowired
     private VehicleHistoryValidationService vehicleHistoryValidationService;
