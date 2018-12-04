@@ -25,6 +25,7 @@ GET       /api/v1/vehicle/history/:vin
 
 To compile and run from source code: `mvn clean spring-boot:run`
 To run from executable `jar: java -jar <PATH TO EXECUTABLE JAR>`
+(executable jar is in bin/ folder)
 
 ### Running the tests
 
