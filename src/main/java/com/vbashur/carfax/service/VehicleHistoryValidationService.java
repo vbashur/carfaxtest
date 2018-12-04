@@ -27,6 +27,11 @@ public class VehicleHistoryValidationService {
             logger.error("Empty VIN value");
             return null;
         }
+        /*
+        Another option is to use restTemplate.getForEntity - it'd help to handle response codes.
+        As long as there are no requirements regarding error handling and for the sake of simplicity
+        DefaultResponseErrorHandler is applied
+         */
         Records fetchedVehicleRecords = restTemplate.getForObject(VIN_VALIDATION_ENDPOINT_URL + vin, Records.class);
         if (Objects.isNull(fetchedVehicleRecords)) {
             logger.error("No records found for VIN: " + vin);

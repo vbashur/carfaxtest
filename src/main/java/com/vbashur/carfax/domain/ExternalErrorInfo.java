@@ -10,9 +10,7 @@ public class ExternalErrorInfo {
         this.error = excpn.getLocalizedMessage();
     }
 
-    public String getUrl() {
-        return url;
-    }
+    public String getUrl() { return url; }
 
     public String getError() {
         return error;

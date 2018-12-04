@@ -56,7 +56,7 @@ public interface Record {
                 Date rec2Date = df.parse(record2.getDate());
                 return rec1Date.compareTo(rec2Date);
             } catch (ParseException e) {
-                throw new IllegalArgumentException("Unable to parse record date", e);
+                throw new IllegalArgumentException("Unable to parse the record date", e);
             }
         };
     }
